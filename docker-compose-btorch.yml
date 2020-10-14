@@ -1,0 +1,28 @@
+version: '3'
+services:
+  odoo-update:
+    image: btorch/odoo-brasil:13
+    network_mode: host
+    ports:
+      - "8050:8050"
+      - "8172:8172"
+    volumes:
+      - /opt/docker/odoov13/dados:/opt/odoo/dados
+      - /opt/docker/odoov13/extra-addons:/opt/odoo/extra-addons
+      - /opt/docker/odoov13/brazil-addons:/opt/odoo/brazil-addons
+    environment:
+      ODOO_VERSION: 13.0
+      ODOO_PASSWORD: odoo
+      ADDONS_PATH: "/opt/odoo/brazil-addons/odoo-brasil"
+      PG_HOST: 192.168.1.215
+      PG_DATABASE: dcc_odoov13
+      PG_PASSWORD: brasil
+      PG_PORT: 5432
+      PG_USER: odoo
+      TIME_CPU: 600
+      TIME_REAL: 720
+      LOG_FILE: /var/log/odoo/odoo.log
+      LONGPOLLING_PORT: 8172
+      WORKERS: 1 
+      PORT: 8150
+      SPORT: 8171
