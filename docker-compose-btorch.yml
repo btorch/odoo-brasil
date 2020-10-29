@@ -1,21 +1,21 @@
 version: '3'
 services:
   odoo-update:
-    image: btorch/odoo-brasil:13
+    image: btorch/odoo-brasil:12
     network_mode: host
     ports:
       - "8050:8050"
       - "8172:8172"
     volumes:
-      - /opt/docker/odoov13/dados:/opt/odoo/dados
-      - /opt/docker/odoov13/extra-addons:/opt/odoo/extra-addons
-      - /opt/docker/odoov13/brazil-addons:/opt/odoo/brazil-addons
+      - /opt/docker/odoov12/dados:/opt/odoo/dados
+      - /opt/docker/odoov12/extra-addons:/opt/odoo/extra-addons
+      - /opt/docker/odoov12/brazil-addons:/opt/odoo/brazil-addons
     environment:
-      ODOO_VERSION: 13.0
+      ODOO_VERSION: 12.0
       ODOO_PASSWORD: odoo
-      ADDONS_PATH: "/opt/odoo/brazil-addons/odoo-brasil"
+      ADDONS_PATH: "/opt/odoo/brazil-addons/odoo-brasil,/opt/odoo/brazil-addons/trustcode-addons,/opt/odoo/brazil-addons/oca-account-financial-reporting,/opt/odoo/brazil-addons/oca-mis-builder,/opt/odoo/brazil-addons/oca-queue,/opt/odoo/brazil-addons/oca-reporting-engine,/opt/odoo/brazil-addons/oca-server-tools,/opt/odoo/brazil-addons/oca-server-ux,/opt/odoo/brazil-addons/oca-web,/opt/odoo/brazil-addons/oca-server-backend"
       PG_HOST: 192.168.1.215
-      PG_DATABASE: dcc_odoov13
+      PG_DATABASE: dcc_odoov12
       PG_PASSWORD: brasil
       PG_PORT: 5432
       PG_USER: odoo

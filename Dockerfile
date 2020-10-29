@@ -19,11 +19,11 @@ RUN pip3 install --no-cache-dir \
   mpld3==0.3 pyzbar pdf2image \
   py3o.template py3o.formats \
   genshi>=0.7 raven \
-  boto3>=1.5.12 plotly==2.4.1 \
+  boto3>=1.5.12 plotly==4.1.0 \
   numpy==1.17.0 pandas==0.19.2 \
   relatorio==0.6.4 twilio \
   pika==0.12.0 openpyxl>=2.6.2 \
-  mysql-connector-python
+  mysql-connector-python altair
 
 
 # Install some Deps
@@ -37,7 +37,8 @@ RUN apt-get update && \
   fonts-liberation libgts-bin libpaper-utils \
   python3-pygments \
   python3-html5lib python3-pyinotify \
-  python3-matplotlib vim
+  python3-matplotlib vim \
+  python3-sqlalchemy
  
 
 # Install Odoo
