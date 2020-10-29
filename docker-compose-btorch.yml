@@ -4,8 +4,8 @@ services:
     image: btorch/odoo-brasil:12
     network_mode: host
     ports:
-      - "8050:8050"
-      - "8172:8172"
+      - "8269:8069"
+      - "8272:8072"
     volumes:
       - /opt/docker/odoov12/dados:/opt/odoo/dados
       - /opt/docker/odoov12/extra-addons:/opt/odoo/extra-addons
@@ -22,7 +22,7 @@ services:
       TIME_CPU: 600
       TIME_REAL: 720
       LOG_FILE: /var/log/odoo/odoo.log
-      LONGPOLLING_PORT: 8172
+      LONGPOLLING_PORT: 8072
       WORKERS: 1 
-      PORT: 8150
-      SPORT: 8171
+      PORT: 8069
+      SPORT: 8071
