@@ -15,8 +15,11 @@ RUN pip3 install --no-cache-dir \
   urllib3==1.22 pyopenssl==17.5.0 \
   pytrustnfe3 signxml \
   iugu-trustcode click-odoo-contrib \
-  ebaysdk==2.1.5 
-  
+  ebaysdk==2.1.5 bokeh==1.1.0 \
+  mpld3==0.3 pyzbar pdf2image \
+  py3o.template py3o.formats \
+  genshi>=0.7 raven
+
 
 
 # Install some Deps
@@ -29,7 +32,8 @@ RUN apt-get update && \
   python3-watchdog python3-xlrd \
   fonts-liberation libgts-bin libpaper-utils \
   python3-pygments \
-  python3-html5lib python3-pyinotify
+  python3-html5lib python3-pyinotify \
+  python3-matplotlib vim
  
 
 # Install Odoo
