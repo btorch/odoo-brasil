@@ -45,7 +45,7 @@ RUN apt-get update && \
 RUN wget --quiet -O - https://nightly.odoo.com/odoo.key | apt-key add - && \
   echo "deb http://nightly.odoo.com/12.0/nightly/deb/ ./" >> /etc/apt/sources.list.d/odoo.list && \
   apt-get update && apt-get install --no-install-recommends -y odoo && \
-  pip3 install --no-cache-dir odoo13-addon-mis-builder && \
+  pip3 install --no-cache-dir odoo12-addon-mis-builder && \
   rm -rf /var/lib/apt/lists/*
 
 
