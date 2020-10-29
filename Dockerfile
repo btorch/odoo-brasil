@@ -1,4 +1,4 @@
-FROM btorch/odoo-base:13
+FROM btorch/odoo-base:12
 
 
 SHELL ["/bin/bash", "-xo", "pipefail", "-c"]
@@ -10,16 +10,20 @@ WORKDIR /opt/
 
 # PIP dep Install
 RUN pip3 install --no-cache-dir \
-  xlwt num2words pysigep \
+  xlwt num2words==0.5.6 pysigep \
   suds-jurko-requests xmlsec==1.3.3 \
-  urllib3==1.22 pyopenssl==17.5.0 \
+  urllib3==1.22 pyopenssl==17.2.0 \
   pytrustnfe3 signxml \
   iugu-trustcode click-odoo-contrib \
   ebaysdk==2.1.5 bokeh==1.1.0 \
   mpld3==0.3 pyzbar pdf2image \
   py3o.template py3o.formats \
-  genshi>=0.7 raven
-
+  genshi>=0.7 raven \
+  boto3>=1.5.12 plotly==2.4.1 \
+  numpy==1.17.0 pandas==0.19.2 \
+  relatorio==0.6.4 twilio \
+  pika==0.12.0 openpyxl>=2.6.2 \
+  mysql-connector-python
 
 
 # Install some Deps
@@ -38,7 +42,7 @@ RUN apt-get update && \
 
 # Install Odoo
 RUN wget --quiet -O - https://nightly.odoo.com/odoo.key | apt-key add - && \
-  echo "deb http://nightly.odoo.com/13.0/nightly/deb/ ./" >> /etc/apt/sources.list.d/odoo.list && \
+  echo "deb http://nightly.odoo.com/12.0/nightly/deb/ ./" >> /etc/apt/sources.list.d/odoo.list && \
   apt-get update && apt-get install --no-install-recommends -y odoo && \
   pip3 install --no-cache-dir odoo13-addon-mis-builder && \
   rm -rf /var/lib/apt/lists/*
@@ -65,10 +69,10 @@ WORKDIR /opt/odoo
 
 # Set some enviroment variables
 ENV ODOO_RC /etc/odoo/odoo.conf
-ENV ODOO_VERSION=13.0
+ENV ODOO_VERSION=12.0
 ENV ODOO_PASSWORD=admin
 ENV PG_HOST=192.168.1.215
-ENV PG_DATABASE=odoov13
+ENV PG_DATABASE=odoov12
 ENV PG_PASSWORD=brasil
 ENV PG_PORT=5432
 ENV PG_USER=odoo
@@ -76,7 +80,7 @@ ENV TIME_CPU=600
 ENV TIME_REAL=720
 ENV LOG_FILE=/var/log/odoo/odoo.log
 ENV LONGPOLLING_PORT=8072
-ENV WORKERS=3
+ENV WORKERS=1
 ENV PORT=8069
 ENV SPORT=8071
 
